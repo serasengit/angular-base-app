@@ -1,0 +1,36 @@
+<mat-nav-list class="sidenav-left-menu__list">
+    <div *ngFor="let module of modules">
+        <ng-container
+            *ngTemplateOutlet="
+                module?.modules?.length! > 0 ? expandableModule : flatModule;
+                context: { $implicit: module }
+            "
+        ></ng-container>
+    </div>
+</mat-nav-list>
+<ng-template let-module #flatModule>
+    <!-- Descomment on app modules configuration
+        <mat-list-item [id]="module.code" [routerLink]="module.link" (click)="changeModule.emit(module)"> 
+    -->
+    <mat-list-item [id]="module.code" (click)="changeModule.emit(module)">
+        <mat-icon class="m-2">{{ module.icon }} </mat-icon>
+        <a>{{ module.code | translate }} </a>
+    </mat-list-item>
+</ng-template>
+<ng-template let-module #expandableModule>
+    <mat-expansion-panel hideToggle [class.mat-elevation-z0]="true">
+        <mat-expansion-panel-header>
+            <mat-icon>{{ module.icon }} </mat-icon>
+            <a>{{ module.code | translate }}</a>
+        </mat-expansion-panel-header>
+        <mat-divider></mat-divider>
+        <mat-nav-list *ngFor="let module of module.modules">
+            <ng-container
+                *ngTemplateOutlet="
+                    module?.modules?.length > 0 ? expandableModule : flatModule;
+                    context: { $implicit: module }
+                "
+            ></ng-container>
+        </mat-nav-list>
+    </mat-expansion-panel>
+</ng-template>
