@@ -1,0 +1,13 @@
+// Imports functions, variables, and mixins that are needed by other Bootstrap files
+@import 'node_modules/bootstrap/scss/bootstrap';
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+// Import Roboot
+@import 'bootstrap/scss/reboot';
+@import 'bootstrap/scss/grid';
+@import 'bootstrap/scss/utilities';
+//Material UI Theme (Examples:deeppurple-amber.css,indigo-pink.css,pink-bluegrey.css,purple-green.css)
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+// Import Countries Flag Icons
+@import 'flag-icons/css/flag-icons.min.css';
