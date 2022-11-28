@@ -1,0 +1,15 @@
+.vscode
+/.angular/cache
+/e2e
+/docs
+/node_modules
+/dist
+/coverage
+.git
+.editorconfig
+.gitignore
+.prettierrc.json
+*.zip
+Dockerfile*
+docker-compose*
+README.md

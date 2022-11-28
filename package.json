@@ -9,7 +9,8 @@
         "start:local": "node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng serve --configuration %npm_config_env%",
         "watch": "ng build --watch --configuration %npm_config_env%",
         "test": "ng test",
-        "test:coverage": "ng test --watch --code-coverage",
+        "test:coverage": "ng test --no-watch --code-coverage",
+        "dockerize": "docker-compose -f docker-compose.yml -f docker/docker-compose.%npm_config_env%.yml  --profile %npm_config_service% up --build -d",
         "lint": "eslint . tsconfig.json --fix",
         "lint-fix": "eslint . --fix",
         "format": "prettier --write ."
