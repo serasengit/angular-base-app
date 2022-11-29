@@ -11,10 +11,10 @@ services:
         image: chg-gestor-documental-front-end-dev-release
         build:
             args:
-                CONFIGURATION: development
+                CONFIGURATION: dev
     nginx:
         container_name: chg-gestor-documental-front-end-dev-app
         image: chg-gestor-documental-front-end-dev-app
         build:
             args:
-                CONFIGURATION: development
+                CONFIGURATION: dev

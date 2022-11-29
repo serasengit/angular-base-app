@@ -11,10 +11,10 @@ services:
         image: chg-gestor-documental-front-end-prod-release
         build:
             args:
-                CONFIGURATION: production
+                CONFIGURATION: prod
     nginx:
         container_name: chg-gestor-documental-front-end-prod-app
         image: chg-gestor-documental-front-end-prod-app
         build:
             args:
-                CONFIGURATION: production
+                CONFIGURATION: prod

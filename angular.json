@@ -31,7 +31,7 @@
                         "scripts": []
                     },
                     "configurations": {
-                        "production": {
+                        "prod": {
                             "budgets": [
                                 {
                                     "type": "initial",
@@ -52,7 +52,7 @@
                             ],
                             "outputHashing": "all"
                         },
-                        "development": {
+                        "dev": {
                             "buildOptimizer": false,
                             "optimization": false,
                             "vendorChunk": true,
@@ -61,19 +61,19 @@
                             "namedChunks": true
                         }
                     },
-                    "defaultConfiguration": "production"
+                    "defaultConfiguration": "prod"
                 },
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "configurations": {
-                        "production": {
-                            "browserTarget": "chg-gestor-documental-front-end:build:production"
+                        "prod": {
+                            "browserTarget": "chg-gestor-documental-front-end:build:prod"
                         },
-                        "development": {
-                            "browserTarget": "chg-gestor-documental-front-end:build:development"
+                        "dev": {
+                            "browserTarget": "chg-gestor-documental-front-end:build:dev"
                         }
                     },
-                    "defaultConfiguration": "development"
+                    "defaultConfiguration": "dev"
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -96,5 +96,8 @@
                 }
             }
         }
+    },
+    "cli": {
+        "analytics": false
     }
 }
