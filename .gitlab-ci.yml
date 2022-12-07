@@ -1,0 +1,73 @@
+image: node:12-alpine
+
+stages:
+    - dependencies
+    - test
+    - build
+
+dependencies:
+    stage: dependencies
+    script:
+        - npm install
+    cache:
+        key:
+            files:
+                - package-lock.json
+        paths:
+            - node_modules
+        policy: pull-push
+lint:
+    stage: test
+    allow_failure: false
+    script:
+        - npm run lint
+    cache:
+        key:
+            files:
+                - package-lock.json
+        paths:
+            - node_modules
+        policy: pull
+coverage:
+    stage: test
+    allow_failure: false
+    script:
+        - npm run test:coverage
+        - echo "Total coverage:$coverage"
+    coverage: '/Lines \W+: (\d+\.\d+)%.*/'
+    artifacts:
+        paths:
+            - coverage/
+    cache:
+        key:
+            files:
+                - package-lock.json
+        paths:
+            - node_modules
+        policy: pull
+sonar:
+    stage: test
+    allow_failure: false
+    script:
+        - npm run sonar
+    cache:
+        key:
+            files:
+                - package-lock.json
+        paths:
+            - node_modules
+        policy: pull
+build:
+    stage: build
+    script:
+        - npm run build
+    artifacts:
+        paths:
+            - $CI_PROJECT_DIR/dist
+    cache:
+        key:
+            files:
+                - package-lock.json
+        paths:
+            - node_modules
+        policy: pull
