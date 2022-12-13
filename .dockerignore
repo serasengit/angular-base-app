@@ -8,8 +8,9 @@
 .git
 .editorconfig
 .gitignore
+.scannerwork
 .prettierrc.json
-*.zip
-Dockerfile*
-docker-compose*
+_.zip
+Dockerfile_
+docker-compose\*
 README.md

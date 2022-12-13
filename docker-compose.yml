@@ -6,7 +6,7 @@ services:
             dockerfile: ./Dockerfile
             target: dependencies
     integration-tests:
-        profiles: ['app', 'integration-tests']
+        profiles: ['integration-tests']
         build:
             context: .
             dockerfile: ./Dockerfile
@@ -32,7 +32,7 @@ services:
             dockerfile: ./Dockerfile
             target: release
         depends_on:
-            integration-tests:
+            dependencies:
                 condition: service_completed_successfully
     nginx:
         profiles: ['app']
