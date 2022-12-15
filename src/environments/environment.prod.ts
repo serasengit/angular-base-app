@@ -6,6 +6,6 @@ export const environment: Environment = {
     API: {
         prefix: '/api',
         version: 'v1',
-        url: 'http://chg-gestor-documental',
+        url: 'https://chg-gestor-documental',
     },
 };
