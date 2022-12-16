@@ -1,5 +1,4 @@
 import { HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest } from '@angular/common/http';
-import { flatten } from '@angular/compiler';
 import { Inject, Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AppState } from '@app/store/reducers/app.reducers';
@@ -74,13 +73,11 @@ export class HttpConfigInterceptor implements HttpInterceptor {
     }
 
     private showMessages(APIErrors: APIError[]): void {
-        const errorMessages: string[] = flatten(
-            APIErrors.map((APIError) =>
-                APIError.errors?.length > 0
-                    ? APIError.errors.map((error: { code: string; message: string }) => error.message)
-                    : APIError.message
-            )
-        );
+        const errorMessages: string[] = APIErrors.map((APIError) =>
+            APIError.errors?.length > 0
+                ? APIError.errors.map((error: { code: string; message: string }) => error.message)
+                : APIError.message
+        ).flat();
         const data: MessageDialogData = {
             type: MessageType.Error,
             title: `an_error_has_ocurred_while_processing_the_request`,

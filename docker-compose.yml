@@ -1,0 +1,47 @@
+version: '3'
+services:
+    dependencies:
+        build:
+            context: .
+            dockerfile: ./Dockerfile
+            target: dependencies
+    integration-tests:
+        profiles: ['integration-tests']
+        build:
+            context: .
+            dockerfile: ./Dockerfile
+            target: integration-tests
+        ports:
+            - '9876:80'
+        environment:
+            - CHROME_BIN=/usr/bin/chromium-browser
+            - COMPOSE_HTTP_TIMEOUT=1000
+        healthcheck:
+            test: ['CMD', 'npm', 'run', 'test']
+            interval: 10s
+            start_period: 10s
+            timeout: 10s
+            retries: 3
+        depends_on:
+            dependencies:
+                condition: service_completed_successfully
+    release:
+        profiles: ['app']
+        build:
+            context: .
+            dockerfile: ./Dockerfile
+            target: release
+        depends_on:
+            dependencies:
+                condition: service_completed_successfully
+    nginx:
+        profiles: ['app']
+        build:
+            context: .
+            dockerfile: ./Dockerfile
+            target: nginx
+        depends_on:
+            release:
+                condition: service_completed_successfully
+        ports:
+            - '8080:8080'

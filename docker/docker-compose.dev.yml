@@ -1,0 +1,20 @@
+version: '3'
+services:
+    dependencies:
+        container_name: chg-gestor-documental-front-end-dev-dependencies
+        image: chg-gestor-documental-front-end-dev-dependencies
+    integration-tests:
+        container_name: chg-gestor-documental-front-end-dev-integration-tests
+        image: chg-gestor-documental-front-end-dev-integration-tests
+    release:
+        container_name: chg-gestor-documental-front-end-dev-release
+        image: chg-gestor-documental-front-end-dev-release
+        build:
+            args:
+                CONFIGURATION: dev
+    nginx:
+        container_name: chg-gestor-documental-front-end-dev-app
+        image: chg-gestor-documental-front-end-dev-app
+        build:
+            args:
+                CONFIGURATION: dev

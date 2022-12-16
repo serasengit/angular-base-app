@@ -2,7 +2,11 @@
     <mat-sidenav-container class="sidenav__container">
         <mat-sidenav #sidenav id="sidenav" mode="over" class="sidenav__container__vertical-menu mat-elevation-z2">
             <mat-toolbar class="sidenav__container__toolbar">
-                <img class="sidenav__container__toolbar__logo img-fluid" src="../../../assets/img/adasa_logo.png" />
+                <img
+                    class="sidenav__container__toolbar__logo img-fluid"
+                    alt="logo"
+                    src="../../../assets/img/adasa_logo.png"
+                />
             </mat-toolbar>
             <app-sidenav-left-menu [modules]="modules" (changeModule)="setModule($event)"> </app-sidenav-left-menu>
         </mat-sidenav>
