@@ -1,10 +1,13 @@
 .sidenav-top-menu {
-  &__toolbar {
-    position: fixed;
-    top: 0;
-    z-index: 1;
-    &__spacer {
-      flex: 1 1 auto;
+    &__toolbar {
+        position: fixed;
+        top: 0;
+        z-index: 1;
+        &__logo {
+            max-width: 100%;
+            max-height: 100%;
+            padding: 3px;
+            margin: 40px;
+        }
     }
-  }
 }

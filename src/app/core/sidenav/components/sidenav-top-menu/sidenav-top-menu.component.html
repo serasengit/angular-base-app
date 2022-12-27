@@ -1,37 +1,7 @@
-<mat-toolbar color="primary" class="sidenav-top-menu__toolbar mat-elevation-z2">
+<mat-toolbar color="primary" class="sidenav-top-menu__toolbar">
     <button mat-icon-button class="sidenav-top-menu__toolbar__button__menu" (click)="toggleSidenav.emit()">
         <mat-icon>menu</mat-icon>
     </button>
     <span>{{ (!moduleCode ? 'CHG_document_manager' : moduleCode) | translate }}</span>
-    <span class="sidenav-top-menu__toolbar__spacer"></span>
-    <button mat-icon-button [matMenuTriggerFor]="settings" class="sidenav-top-menu__toolbar__button__settings m-1">
-        <mat-icon>settings</mat-icon>
-    </button>
-    <mat-menu #settings="matMenu" class="sidenav-top-menu__toolbar__button__settings__menu">
-        <mat-menu-item
-            mat-menu-item
-            [matMenuTriggerFor]="languages"
-            class="sidenav-top-menu__toolbar__button__settings__menu__languages"
-        >
-            {{ 'languages' | translate }}
-        </mat-menu-item>
-    </mat-menu>
-    <mat-menu #languages="matMenu" class="sidenav-top-menu__toolbar__button__settings__menu__languages__menu">
-        <mat-menu-item
-            mat-menu-item
-            class="sidenav-top-menu__toolbar__button__settings__menu__languages__menu__spanish"
-            (click)="changeLanguage.emit(Language.Spanish)"
-        >
-            <span class="fi fi-es"></span>
-            <span class="m-2">{{ 'spanish' | translate }}</span>
-        </mat-menu-item>
-        <mat-menu-item
-            mat-menu-item
-            class="sidenav-top-menu__toolbar__button__settings__menu__languages__menu__english"
-            (click)="changeLanguage.emit(Language.English)"
-        >
-            <span class="fi fi-um"></span>
-            <span class="m-2">{{ 'english' | translate }}</span>
-        </mat-menu-item>
-    </mat-menu>
+    <img class="sidenav-top-menu__toolbar__logo rounded" alt="logo" src="../../../assets/img/saihg_logo.png" />
 </mat-toolbar>
