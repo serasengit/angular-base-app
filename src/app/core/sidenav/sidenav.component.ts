@@ -1,10 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { setLanguage, setModule } from '@app/store/actions/app.actions';
-import { getModuleCode } from '@app/store/selectors/app.selectors';
+import { DeviceType } from '@app/app.component';
+import { setModule } from '@app/store/actions/app.actions';
+import { getModuleCode, getDeviceType } from '@app/store/selectors/app.selectors';
 import { Module } from '@core/models/module.model';
 import { select, Store } from '@ngrx/store';
-import { Language } from 'src/app/app.component';
 
 import { AppState } from '../../store/reducers/app.reducers';
 
@@ -15,6 +15,9 @@ import { AppState } from '../../store/reducers/app.reducers';
 })
 export class SidenavComponent {
     readonly moduleCode$ = this.appStore.pipe(select(getModuleCode));
+    readonly deviceType$ = this.appStore.pipe(select(getDeviceType));
+
+    readonly DeviceType = DeviceType;
     readonly modules: Module[] = [
         {
             id: 1,
@@ -33,10 +36,6 @@ export class SidenavComponent {
     async setModule(module: Module): Promise<void> {
         this.appStore.dispatch(setModule({ module }));
         this.sidenav?.toggle();
-    }
-
-    setLanguage(language: Language): void {
-        this.appStore.dispatch(setLanguage({ language }));
     }
 
     toggleSidenav(): void {
