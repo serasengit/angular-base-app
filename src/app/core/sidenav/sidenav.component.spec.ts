@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatButtonHarness } from '@angular/material/button/testing';
-import { MatIconHarness } from '@angular/material/icon/testing';
 import { MatMenuHarness } from '@angular/material/menu/testing';
 import { MatSidenavHarness } from '@angular/material/sidenav/testing';
 import { By } from '@angular/platform-browser';
@@ -51,46 +50,27 @@ describe('Sidenav: Component ', () => {
         expect(sidenav).toBeTruthy();
     });
     it('should open top sidenav', async () => {
-        const toggleSidenavBtn = await loader.getHarness(
-            MatButtonHarness.with({ selector: '.sidenav-top-menu__toolbar__button__menu' })
-        );
+        const toggleSidenavBtn = await loader.getHarness(MatButtonHarness.with({ selector: '.sidenav-top-menu__toolbar__menu' }));
         await toggleSidenavBtn.click();
         const sidenav = await loader.getHarness(MatSidenavHarness.with({ selector: '#sidenav' }));
         const isOpen = await sidenav.isOpen();
         expect(isOpen).toBe(true);
     });
     it('should close top sidenav', async () => {
-        const toggleSidenavBtn = await loader.getHarness(
-            MatButtonHarness.with({ selector: '.sidenav-top-menu__toolbar__button__menu' })
-        );
+        const toggleSidenavBtn = await loader.getHarness(MatButtonHarness.with({ selector: '.sidenav-top-menu__toolbar__menu' }));
         await toggleSidenavBtn.click();
         await toggleSidenavBtn.click();
         const sidenav = await loader.getHarness(MatSidenavHarness.with({ selector: '#sidenav' }));
         const isOpen = await sidenav.isOpen();
         expect(isOpen).toBe(false);
     });
-    it('should set module', async () => {
-        const toggleSidenavBtn = await loader.getHarness(
-            MatButtonHarness.with({ selector: '.sidenav-top-menu__toolbar__button__menu' })
-        );
-        await toggleSidenavBtn.click();
-        const icons = await loader.getAllHarnesses(MatIconHarness);
-        const dashboardIcon = icons.find(async (icon) => (await icon.getName()) === 'dashboard');
-        await (await dashboardIcon.host()).click();
-        fixture.detectChanges();
-        expect(sidenavTopMenu.componentInstance.moduleCode).toEqual('dashboard');
-    });
 
     it('should not have the settings menu open', async () => {
-        const languagesBtn = sidenavTopMenu.query(
-            By.css('.sidenav-top-menu__toolbar__button__settings__menu__languages')
-        );
+        const languagesBtn = sidenavTopMenu.query(By.css('.sidenav-top-menu__toolbar__settings__menu__languages'));
         expect(languagesBtn).toBeFalsy();
     });
     it('open the menu when clicking on the settings button and select english language', async () => {
-        const settingsBtn = await loader.getHarness(
-            MatButtonHarness.with({ selector: '.sidenav-top-menu__toolbar__button__settings' })
-        );
+        const settingsBtn = await loader.getHarness(MatButtonHarness.with({ selector: '.sidenav-top-menu__toolbar__settings' }));
         await settingsBtn.click();
         const settingsMenu = await loader.getHarness(MatMenuHarness);
         const languageItem = (await settingsMenu.getItems())[0];

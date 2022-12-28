@@ -17,7 +17,7 @@
             <app-sidenav-left-menu [modules]="modules" (changeModule)="setModule($event)"> </app-sidenav-left-menu>
         </mat-sidenav>
         <mat-sidenav-content class="sidenav__container__content">
-            <app-sidenav-top-menu [moduleCode]="moduleCode$ | async" (toggleSidenav)="toggleSidenav()"></app-sidenav-top-menu>
+            <app-sidenav-top-menu (toggleSidenav)="toggleSidenav()" (changeLanguage)="setLanguage($event)"></app-sidenav-top-menu>
             <div class="sidenav__container__content__router">
                 <router-outlet></router-outlet>
             </div>

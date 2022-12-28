@@ -1,5 +1,19 @@
 .sidenav-left-menu {
     &__list {
+        padding-top: 30px;
+        .mat-expansion-panel {
+            background: #1a202e;
+            color: #a1a2b6;
+            .mat-expansion-panel-header {
+                a {
+                    margin-left: 8px;
+                }
+            }
+        }
+        .mat-expansion-panel:hover {
+            background: #141924;
+            color: #ffffff;
+        }
         .mat-list-item {
             .mat-icon {
                 color: #a1a2b6;

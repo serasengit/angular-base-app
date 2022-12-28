@@ -1,8 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { DeviceType } from '@app/app.component';
-import { setModule } from '@app/store/actions/app.actions';
-import { getModuleCode, getDeviceType } from '@app/store/selectors/app.selectors';
+import { DeviceType, Language } from '@app/app.component';
+import { setLanguage, setModule } from '@app/store/actions/app.actions';
+import { getDeviceType } from '@app/store/selectors/app.selectors';
 import { Module } from '@core/models/module.model';
 import { select, Store } from '@ngrx/store';
 
@@ -14,7 +14,6 @@ import { AppState } from '../../store/reducers/app.reducers';
     styleUrls: ['./sidenav.component.scss'],
 })
 export class SidenavComponent {
-    readonly moduleCode$ = this.appStore.pipe(select(getModuleCode));
     readonly deviceType$ = this.appStore.pipe(select(getDeviceType));
 
     readonly DeviceType = DeviceType;
@@ -26,6 +25,24 @@ export class SidenavComponent {
             link: '/dashboard',
             icon: 'dashboard',
             order: 1,
+        },
+        {
+            id: 2,
+            code: 'dashboard',
+            description: 'Dashboard',
+            link: '/dashboard',
+            icon: 'dashboard',
+            order: 2,
+            modules: [
+                {
+                    id: 1,
+                    code: 'dashboard',
+                    description: 'Dashboard',
+                    link: '/dashboard',
+                    icon: 'dashboard',
+                    order: 1,
+                },
+            ],
         },
     ];
 
@@ -40,5 +57,9 @@ export class SidenavComponent {
 
     toggleSidenav(): void {
         this.sidenav?.toggle();
+    }
+
+    setLanguage(language: Language): void {
+        this.appStore.dispatch(setLanguage({ language }));
     }
 }

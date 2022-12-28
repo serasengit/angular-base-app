@@ -4,7 +4,7 @@
             *ngTemplateOutlet="module?.modules?.length! > 0 ? expandableModule : flatModule; context: { $implicit: module }"
         ></ng-container>
     </div>
-    <span class="sidenav-left-menu__list__version"> {{ version }} </span>
+    <span class="sidenav-left-menu__list__version"> v{{ version }} </span>
 </mat-nav-list>
 <ng-template let-module #flatModule>
     <!-- Descomment on app modules configuration
