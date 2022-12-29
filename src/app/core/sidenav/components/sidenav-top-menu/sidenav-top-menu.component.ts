@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Language } from '@app/app.component';
-import { Module } from '@core/models/module.model';
 
 @Component({
     selector: 'app-sidenav-top-menu',
@@ -8,10 +7,7 @@ import { Module } from '@core/models/module.model';
     styleUrls: ['./sidenav-top-menu.component.scss'],
 })
 export class SidenavTopMenuComponent {
-    @Input() moduleCode: string;
-    @Output() changeModule = new EventEmitter<Module>();
-    @Output() changeLanguage = new EventEmitter<Language>();
     @Output() toggleSidenav = new EventEmitter<void>();
-
+    @Output() changeLanguage = new EventEmitter<Language>();
     readonly Language = Language;
 }

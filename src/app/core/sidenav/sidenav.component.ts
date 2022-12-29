@@ -1,10 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { DeviceType, Language } from '@app/app.component';
 import { setLanguage, setModule } from '@app/store/actions/app.actions';
-import { getModuleCode } from '@app/store/selectors/app.selectors';
+import { getDeviceType } from '@app/store/selectors/app.selectors';
 import { Module } from '@core/models/module.model';
 import { select, Store } from '@ngrx/store';
-import { Language } from 'src/app/app.component';
 
 import { AppState } from '../../store/reducers/app.reducers';
 
@@ -14,7 +14,9 @@ import { AppState } from '../../store/reducers/app.reducers';
     styleUrls: ['./sidenav.component.scss'],
 })
 export class SidenavComponent {
-    readonly moduleCode$ = this.appStore.pipe(select(getModuleCode));
+    readonly deviceType$ = this.appStore.pipe(select(getDeviceType));
+
+    readonly DeviceType = DeviceType;
     readonly modules: Module[] = [
         {
             id: 1,
@@ -23,6 +25,24 @@ export class SidenavComponent {
             link: '/dashboard',
             icon: 'dashboard',
             order: 1,
+        },
+        {
+            id: 2,
+            code: 'dashboard',
+            description: 'Dashboard',
+            link: '/dashboard',
+            icon: 'dashboard',
+            order: 2,
+            modules: [
+                {
+                    id: 1,
+                    code: 'dashboard',
+                    description: 'Dashboard',
+                    link: '/dashboard',
+                    icon: 'dashboard',
+                    order: 1,
+                },
+            ],
         },
     ];
 
@@ -35,11 +55,11 @@ export class SidenavComponent {
         this.sidenav?.toggle();
     }
 
-    setLanguage(language: Language): void {
-        this.appStore.dispatch(setLanguage({ language }));
-    }
-
     toggleSidenav(): void {
         this.sidenav?.toggle();
+    }
+
+    setLanguage(language: Language): void {
+        this.appStore.dispatch(setLanguage({ language }));
     }
 }
