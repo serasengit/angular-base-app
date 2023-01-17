@@ -5,11 +5,13 @@ import { TranslateModule, TranslateService, TranslateStore } from '@ngx-translat
 import { MessageDialogComponent } from './components/dialogs/message-dialog/message-dialog.component';
 
 import { MaterialModule } from './material/material.module';
+import { LocalDatePipe } from './pipes/local-date.pipe';
+import { ReplaceNullPipe } from './pipes/replace-null.pipe';
 
 @NgModule({
     imports: [CommonModule, MaterialModule, TranslateModule, FormsModule, ReactiveFormsModule],
-    exports: [MaterialModule, TranslateModule, FormsModule, ReactiveFormsModule],
-    providers: [TranslateService, TranslateStore],
-    declarations: [MessageDialogComponent],
+    exports: [MaterialModule, TranslateModule, FormsModule, ReactiveFormsModule, LocalDatePipe, ReplaceNullPipe],
+    providers: [TranslateService, TranslateStore, LocalDatePipe, ReplaceNullPipe],
+    declarations: [MessageDialogComponent, LocalDatePipe, ReplaceNullPipe],
 })
 export class SharedModule {}

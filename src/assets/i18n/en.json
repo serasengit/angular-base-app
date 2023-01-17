@@ -1,8 +1,18 @@
 {
-    "dashboard": "Dashboard",
+    "CHG_document_manager": "CHG Document Manager",
+    "an_error_has_ocurred_while_processing_the_request": "An error has ocurred while processing the request",
+    "close": "Close",
+    "documents": "Documents",
+    "documents_search": "Documents search",
+    "end_date": "End date",
     "english": "English",
+    "group": "Group",
     "home": "Home",
     "languages": "Languages",
-    "CHG_document_manager": "CHG Document Manager",
-    "spanish": "Spanish"
+    "search": "Search",
+    "spanish": "Spanish",
+    "start_date": "Start date",
+    "state": "State",
+    "sub_group": "Subgroup",
+    "type": "Type"
 }

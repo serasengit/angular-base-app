@@ -7,11 +7,7 @@ import { APIError } from '@core/models/API-error.model';
 import { Environment } from '@core/models/environment.model';
 import { ENVIRONMENT } from '@core/tokens/environment.token';
 import { select, Store } from '@ngrx/store';
-import {
-    MessageDialogComponent,
-    MessageDialogData,
-    MessageType,
-} from '@shared/components/dialogs/message-dialog/message-dialog.component';
+import { MessageDialogComponent, MessageDialogData, MessageType } from '@shared/components/dialogs/message-dialog/message-dialog.component';
 import { combineLatest, Observable, throwError } from 'rxjs';
 import { catchError, finalize, switchMap, take } from 'rxjs/operators';
 import { hideSpinner, showSpinner } from '../../store/actions/app.actions';
@@ -26,7 +22,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
     constructor(
         @Inject(ENVIRONMENT) private readonly environment: Environment,
         private readonly dg: MatDialog,
-        readonly store: Store<AppState>
+        private readonly store: Store<AppState>
     ) {}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
@@ -36,10 +32,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
         return combineLatest([this.language$]).pipe(
             take(1),
             switchMap(([language]) => {
-                let headers: HttpHeaders = req.headers.set(
-                    'Access-Control-Allow-Origin',
-                    `${this.environment.API.url}`
-                );
+                let headers: HttpHeaders = req.headers.set('Access-Control-Allow-Origin', `${this.environment.API.url}`);
                 // Recover language app selected to send it as header param in the request in order to receive server messages translated
                 if (language) headers = headers.set('language', language);
                 req = req.clone({

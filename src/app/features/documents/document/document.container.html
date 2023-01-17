@@ -1,0 +1,15 @@
+<div class="container-fluid p-4">
+    <div class="document row" *ngIf="!(hasError$| async)">
+        <!-- Document filters-->
+        <div class="document__filters col-12">
+            <app-document-filter
+                [groups]="groups$|async"
+                [documentStates]="documentStates$|async"
+                [documentTypes]="documentTypes$|async"
+                (changeValue)="setFilter($event)"
+                (onSubmit)="onSubmit($event)"
+            ></app-document-filter>
+        </div>
+        <!-- Documents-->
+    </div>
+</div>

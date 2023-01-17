@@ -9,7 +9,7 @@
         "start:local": "node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng serve --configuration %npm_config_env%",
         "watch": "ng build --watch --configuration %npm_config_env%",
         "test": "ng test",
-        "test:coverage": "ng test --watch=false --code-coverage",
+        "test:coverage": "ng test --watch=true --code-coverage",
         "dockerize": "docker-compose -f docker-compose.yml -f docker/docker-compose.%npm_config_env%.yml  --profile %npm_config_service% up --build -d",
         "lint": "eslint . tsconfig.json --fix",
         "lint-fix": "eslint . --fix",
@@ -18,13 +18,10 @@
     },
     "private": true,
     "dependencies": {
-        "@angular-devkit/build-angular": "^14.2.10",
         "@angular/animations": "^14.2.12",
         "@angular/cdk": "^13.0.2",
-        "@angular/cli": "^14.2.10",
         "@angular/common": "^14.2.12",
         "@angular/compiler": "^14.2.12",
-        "@angular/compiler-cli": "^14.2.12",
         "@angular/core": "^14.2.12",
         "@angular/forms": "^14.2.12",
         "@angular/material": "^13.0.2",
@@ -44,6 +41,9 @@
         "zone.js": "~0.11.4"
     },
     "devDependencies": {
+        "@angular-devkit/build-angular": "^14.2.10",
+        "@angular/cli": "^14.2.10",
+        "@angular/compiler-cli": "^14.2.12",
         "@redux-devtools/extension": "^3.2.3",
         "@types/jasmine": "~4.3.0",
         "@typescript-eslint/eslint-plugin": "^5.44.0",

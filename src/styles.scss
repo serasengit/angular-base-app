@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 // Imports functions, variables, and mixins that are needed by other Bootstrap files
 @import 'node_modules/bootstrap/scss/bootstrap';
 @import 'bootstrap/scss/functions';
@@ -13,3 +14,41 @@
 @import 'flag-icons/css/flag-icons.min.css';
 // Import theme variables
 @import 'app/styles/variables.scss';
+
+// Mat divider
+.mat-divider {
+    border-top-color: mat.get-color-from-palette($secondary) !important;
+}
+// Mat form
+mat-form-field {
+    font-size: 14px !important;
+    margin-bottom: 5px !important;
+    mat-label {
+        font-size: 16px !important;
+    }
+}
+
+// Mat card
+.mat-card {
+    ::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+    }
+    padding-top: 0px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    background: white;
+}
+
+.mat-card-title {
+    color: white;
+    background-color: mat.get-color-from-palette($secondary) !important;
+    padding: 5px !important;
+    text-align: center;
+}
+.mat-card-content {
+    padding: 20px;
+}
+.mat-card-actions {
+    padding-bottom: 10px !important;
+}
