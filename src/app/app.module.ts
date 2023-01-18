@@ -15,6 +15,7 @@ import { StoreModule } from '@ngrx/store';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { appReducer } from './store/reducers/app.reducers';
 import { environment } from 'src/environments/environment';
+import { EffectsModule } from '@ngrx/effects';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -45,6 +46,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
             },
             useDefaultLang: true,
         }),
+        EffectsModule.forRoot([]),
     ],
     providers: [{ provide: ENVIRONMENT, useValue: environment }],
     bootstrap: [AppComponent],
