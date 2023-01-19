@@ -1,12 +1,10 @@
 <mat-nav-list class="sidenav-left-menu__list">
     <div *ngFor="let module of modules">
         <ng-container
-            *ngTemplateOutlet="
-                module?.modules?.length! > 0 ? expandableModule : flatModule;
-                context: { $implicit: module }
-            "
+            *ngTemplateOutlet="module?.modules?.length! > 0 ? expandableModule : flatModule; context: { $implicit: module }"
         ></ng-container>
     </div>
+    <span class="sidenav-left-menu__list__version"> v{{ version }} </span>
 </mat-nav-list>
 <ng-template let-module #flatModule>
     <!-- Descomment on app modules configuration
@@ -26,10 +24,7 @@
         <mat-divider></mat-divider>
         <mat-nav-list *ngFor="let module of module.modules">
             <ng-container
-                *ngTemplateOutlet="
-                    module?.modules?.length > 0 ? expandableModule : flatModule;
-                    context: { $implicit: module }
-                "
+                *ngTemplateOutlet="module?.modules?.length > 0 ? expandableModule : flatModule; context: { $implicit: module }"
             ></ng-container>
         </mat-nav-list>
     </mat-expansion-panel>
