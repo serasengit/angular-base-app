@@ -80,12 +80,12 @@ export class DocumentEffects {
             mergeMap(({ filter }) =>
                 this.documentService
                     .find(
-                        filter.group?.id,
-                        filter.subGroup?.id,
-                        filter.documentType?.id,
-                        filter.documentState?.id,
-                        filter.startDate,
-                        filter.endDate
+                        filter?.group?.id,
+                        filter?.subGroup?.id,
+                        filter?.documentType?.id,
+                        filter?.documentState?.id,
+                        filter?.startDate,
+                        filter?.endDate
                     )
                     .pipe(
                         map((documents) => {

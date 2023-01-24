@@ -30,6 +30,7 @@ mat-form-field {
 
 // Mat card
 .mat-card {
+    border: 0.5px solid mat.get-color-from-palette($secondary, 200) !important;
     ::-webkit-scrollbar {
         width: 4px;
         height: 4px;
@@ -37,13 +38,11 @@ mat-form-field {
     padding-top: 0px !important;
     padding-left: 0px !important;
     padding-right: 0px !important;
-    background: white;
 }
 
 .mat-card-title {
-    color: white;
-    background-color: mat.get-color-from-palette($secondary) !important;
-    padding: 5px !important;
+    color: mat.get-color-from-palette($primary, 700) !important;
+    padding: 15px !important;
     text-align: center;
 }
 .mat-card-content {
@@ -51,4 +50,43 @@ mat-form-field {
 }
 .mat-card-actions {
     padding-bottom: 10px !important;
+}
+// Scrollbar
+::-webkit-scrollbar {
+    width: 10px;
+    height: 15px;
+    background-color: #f5f5f5;
+}
+::-webkit-scrollbar-track {
+    background-color: #f5f5f5;
+}
+::-webkit-scrollbar-thumb {
+    background-color: mat.get-color-from-palette($secondary);
+}
+
+// Mat table styles
+.mat-row:nth-child(even) {
+    background-color: mat.get-color-from-palette($secondary, 50);
+}
+.mat-cell {
+    padding: 5px 25px;
+}
+.mat-table {
+    min-width: 100%;
+    max-width: 100%;
+    display: table;
+    border-collapse: collapse;
+}
+
+.mat-header-cell {
+    padding: 0px 25px;
+    color: white !important;
+    font-size: 13px !important;
+    background: mat.get-color-from-palette($secondary, 700);
+    text-transform: uppercase;
+}
+.mat-header-row {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
 }

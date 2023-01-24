@@ -5,7 +5,7 @@ import { DocumentFilterComponent } from './components/document-filter/document-f
 import { DocumentFilter } from './models/document-filter.model';
 import { DocumentState } from './models/document-state.model';
 import { fetchDocuments, purge, setFilter } from './store/actions/document.actions';
-import { getDocumentStates, getDocumentTypes, getFilter, getGroups, hasError } from './store/selectors/document.selector';
+import { getDocuments, getDocumentStates, getDocumentTypes, getFilter, getGroups, hasError } from './store/selectors/document.selector';
 
 @Component({
     selector: 'app-document',
@@ -20,6 +20,7 @@ export class DocumentContainer implements OnDestroy {
     readonly documentStates$ = this.store.pipe(select(getDocumentStates));
     readonly documentTypes$ = this.store.pipe(select(getDocumentTypes));
     readonly filter$ = this.store.pipe(select(getFilter));
+    readonly documents$ = this.store.pipe(select(getDocuments));
 
     constructor(private readonly store: Store<DocumentState>) {}
 

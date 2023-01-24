@@ -1,8 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
-import { fetchDocumentStates, fetchDocumentTypes, fetchGroups } from '@features/documents/document/store/actions/document.actions';
+import {
+    fetchDocumentStates,
+    fetchDocumentTypes,
+    fetchGroups,
+    fetchDocuments,
+} from '@features/documents/document/store/actions/document.actions';
 import { DocumentState } from '@features/documents/document/store/reducers/document.reducer';
-import { getDocumentStates, getDocumentTypes, getGroups } from '@features/documents/document/store/selectors/document.selector';
+import {
+    getDocuments,
+    getDocumentStates,
+    getDocumentTypes,
+    getGroups,
+} from '@features/documents/document/store/selectors/document.selector';
 import { select, Store } from '@ngrx/store';
 import { combineLatest, firstValueFrom } from 'rxjs';
 
@@ -11,16 +21,18 @@ export class DocumentResolver implements Resolve<Document> {
     private readonly documentTypes$ = this.store.pipe(select(getDocumentTypes));
     private readonly documentStates$ = this.store.pipe(select(getDocumentStates));
     private readonly groups$ = this.store.pipe(select(getGroups));
+    private readonly documents$ = this.store.pipe(select(getDocuments));
 
     constructor(protected readonly store: Store<DocumentState>) {}
 
     public async resolve(): Promise<any> {
-        const [documentTypes, documentStates, groups] = await firstValueFrom(
-            combineLatest([this.documentTypes$, this.documentStates$, this.groups$])
+        const [documentTypes, documentStates, groups, documents] = await firstValueFrom(
+            combineLatest([this.documentTypes$, this.documentStates$, this.groups$, this.documents$])
         );
         if (!documentTypes) this.fetchDocumentTypes();
         if (!documentStates) this.fetchDocumentStates();
         if (!groups) this.fetchGroups();
+        if (!documents) this.fetchDocuments();
     }
 
     private fetchDocumentTypes(): void {
@@ -33,5 +45,9 @@ export class DocumentResolver implements Resolve<Document> {
 
     private fetchGroups(): void {
         this.store.dispatch(fetchGroups({ withSubGroups: true }));
+    }
+
+    private fetchDocuments(): void {
+        this.store.dispatch(fetchDocuments({}));
     }
 }

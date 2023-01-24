@@ -1,0 +1,19 @@
+@use '@angular/material' as mat;
+// Import theme variables
+@import '../../../../../styles/variables.scss';
+
+.documents {
+    &__filter {
+        mat-form-field {
+            width: 100%;
+        }
+    }
+    &__table {
+        overflow: auto;
+        height: 600px;
+    }
+    &__table::-webkit-scrollbar {
+        width: 5px !important;
+        height: 5px !important;
+    }
+}

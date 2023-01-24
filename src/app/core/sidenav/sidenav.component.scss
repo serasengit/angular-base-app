@@ -23,6 +23,8 @@
             }
         }
         &__content {
+            overflow-y: auto;
+            overflow-x: hidden;
             &__router {
                 margin-top: 75px;
             }

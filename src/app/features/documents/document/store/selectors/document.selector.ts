@@ -12,4 +12,6 @@ export const getGroups = createSelector(selectDocument, (state) => state.filter?
 
 export const getFilter = createSelector(selectDocument, (state) => state.filter);
 
+export const getDocuments = createSelector(selectDocument, (state) => state.documents);
+
 export const hasError = createSelector(selectDocument, (state) => state.hasError);

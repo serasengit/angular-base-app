@@ -1,6 +1,6 @@
-import { DocumentState } from '@features/documents/document/models/document-state.model';
-import { DocumentType } from '@features/documents/document/models/document-type.model';
 import { Group } from '@features/group/models/group-model';
+import { DocumentState } from './document-state.model';
+import { DocumentType } from './document-type.model';
 
 export interface DocumentFilter {
     groups: Group[];

@@ -3,11 +3,10 @@ import { Injectable, Inject } from '@angular/core';
 import { ENVIRONMENT } from '@core/tokens/environment.token';
 import { Observable } from 'rxjs';
 import { Environment } from '@core/models/environment.model';
-
+import { Document } from '../models/document.model';
 @Injectable()
 export class DocumentService {
     constructor(@Inject(ENVIRONMENT) private readonly environment: Environment, private readonly http: HttpClient) {}
-
     find(
         groupId?: number,
         subGroupId?: number,

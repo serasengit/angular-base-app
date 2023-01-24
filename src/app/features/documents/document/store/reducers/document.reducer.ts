@@ -1,4 +1,3 @@
-import { DocumentFilter } from '@features/documents/document/models/document-filter.model';
 import {
     fetchDocumentsSuccess,
     fetchDocumentStatesFailure,
@@ -11,6 +10,8 @@ import {
     setFilter,
 } from '@features/documents/document/store/actions/document.actions';
 import { createReducer, on } from '@ngrx/store';
+import { DocumentFilter } from '../../models/document-filter.model';
+import { Document } from '../../models/document.model';
 
 export interface DocumentState {
     filter: DocumentFilter;

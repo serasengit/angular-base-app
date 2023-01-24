@@ -10,6 +10,9 @@
                 (onSubmit)="onSubmit($event)"
             ></app-document-filter>
         </div>
-        <!-- Documents-->
+        <!-- Document list-->
+        <div class="document__list col-12 pt-4" *ngIf="documents$|async as documents">
+            <app-document-list [records]="documents"> </app-document-list>
+        </div>
     </div>
 </div>
