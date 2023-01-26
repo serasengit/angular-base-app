@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import { DocumentStateService } from '@features/documents/document/services/document-state.service';
 import { DocumentTypeService } from '@features/documents/document/services/document-type.service';
 import {
+    fetchDocument,
+    fetchDocumentFailure,
     fetchDocuments,
     fetchDocumentsFailure,
     fetchDocumentsSuccess,
     fetchDocumentStates,
     fetchDocumentStatesFailure,
     fetchDocumentStatesSuccess,
+    fetchDocumentSuccess,
     fetchDocumentTypes,
     fetchDocumentTypesFailure,
     fetchDocumentTypesSuccess,
@@ -93,6 +96,20 @@ export class DocumentEffects {
                         }),
                         catchError((error) => of(fetchDocumentsFailure({ error })))
                     )
+            )
+        )
+    );
+
+    readonly fetchDocument$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(fetchDocument),
+            mergeMap(({ id }) =>
+                this.documentService.findById(id).pipe(
+                    map((document) => {
+                        return fetchDocumentSuccess({ document });
+                    }),
+                    catchError((error) => of(fetchDocumentFailure({ error })))
+                )
             )
         )
     );

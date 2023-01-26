@@ -25,4 +25,9 @@ export class DocumentService {
         const url = `${this.environment.API.url}${this.environment.API.prefix}/${this.environment.API.version}/documents`;
         return this.http.get<Document[]>(url, { params });
     }
+
+    findById(id: number): Observable<Document> {
+        const url = `${this.environment.API.url}${this.environment.API.prefix}/${this.environment.API.version}/documents/${id}`;
+        return this.http.get<Document>(url);
+    }
 }

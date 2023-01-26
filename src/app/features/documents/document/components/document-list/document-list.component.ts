@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
-import { DataSourceBase } from '@shared/components/data-source/data-source.base';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { DataSourceBase } from '@shared/components/datasource/data-source.base';
 import { CustomDateFormat } from '@shared/pipes/local-date.pipe';
 import { Document } from '../../models/document.model';
+import { Group } from '../../../../group/models/group-model';
 
 interface DocumentRow {
+    id: number;
     startDate: Date;
+    group: string;
     reference: string;
     subject: string;
     sref: string;
@@ -16,6 +19,7 @@ interface DocumentRow {
 
 enum DocumentColumn {
     StartDate = 'startDate',
+    Group = 'group',
     Reference = 'reference',
     Subject = 'subject',
     Sref = 'sref',
@@ -29,6 +33,7 @@ enum DocumentColumn {
     selector: 'app-document-list',
     templateUrl: './document-list.component.html',
     styleUrls: ['./document-list.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DocumentListComponent extends DataSourceBase<Document, DocumentRow> {
     readonly DocumentColumn = DocumentColumn;
@@ -36,8 +41,10 @@ export class DocumentListComponent extends DataSourceBase<Document, DocumentRow>
 
     protected getRow(document: Document): DocumentRow {
         return {
+            id: document.id,
             startDate: document.startTime,
-            reference: `${document.group.parent.code} - ${document.group.code} - ${document.code}`,
+            group: document.group.parent.code,
+            reference: `${document.group.code} -  ${document.type.code} - ${document.code}`,
             subject: document.subject,
             sref: document.sref,
             promoter: document.promoter?.fullName,
@@ -50,6 +57,7 @@ export class DocumentListComponent extends DataSourceBase<Document, DocumentRow>
     get displayedColumns(): DocumentColumn[] {
         return [
             DocumentColumn.StartDate,
+            DocumentColumn.Group,
             DocumentColumn.Reference,
             DocumentColumn.Subject,
             DocumentColumn.Sref,

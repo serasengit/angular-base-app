@@ -14,4 +14,6 @@ export const getFilter = createSelector(selectDocument, (state) => state.filter)
 
 export const getDocuments = createSelector(selectDocument, (state) => state.documents);
 
+export const getDocument = createSelector(selectDocument, (state) => state.document);
+
 export const hasError = createSelector(selectDocument, (state) => state.hasError);

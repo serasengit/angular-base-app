@@ -1,11 +1,11 @@
-<div class="documents">
-    <div class="documents__filter">
+<div class="document-list">
+    <div class="document-list__filter">
         <mat-form-field>
             <mat-label>{{ 'filter' | translate }}...</mat-label>
             <input id="filter" matInput (keyup)="applyFilter($event)" />
         </mat-form-field>
     </div>
-    <div class="documents__table mat-elevation-z2">
+    <div class="document-list__table table-responsive mat-elevation-z2">
         <mat-table [dataSource]="dataSource" #table matSort>
             <!-- StartDate Column -->
             <ng-container [matColumnDef]="DocumentColumn.StartDate">
@@ -15,6 +15,13 @@
                 <mat-cell *matCellDef="let row">
                     {{ row.startDate | localDate : CustomDateFormat.ShortDate }}
                 </mat-cell>
+            </ng-container>
+            <!-- Group Column -->
+            <ng-container [matColumnDef]="DocumentColumn.Group">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>
+                    {{ 'group' | translate }}
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{ row.group }} </mat-cell>
             </ng-container>
             <!-- Reference Column -->
             <ng-container [matColumnDef]="DocumentColumn.Reference">
@@ -67,10 +74,15 @@
             </ng-container>
             <!-- Displayed Columns -->
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+            <mat-row
+                [class]="{ highlight: selectedRecord?.id == row.id }"
+                (click)="changeRecord.emit(row)"
+                *matRowDef="let row; columns: displayedColumns"
+            >
+            </mat-row>
         </mat-table>
     </div>
-    <div class="document__paginator mat-elevation-z2">
+    <div class="document-list__paginator mat-elevation-z2">
         <mat-paginator #paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"> </mat-paginator>
     </div>
 </div>

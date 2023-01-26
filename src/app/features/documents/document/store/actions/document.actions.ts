@@ -37,4 +37,12 @@ export const fetchDocumentsSuccess = createAction('[Document API] Fetch Document
 
 export const fetchDocumentsFailure = createAction('[Document API] Fetch Documents Failure', props<{ readonly error: any }>());
 
+export const fetchDocument = createAction('[Document] Fetch Document', props<{ readonly id: number }>());
+
+export const fetchDocumentSuccess = createAction('[Document API] Fetch Document Success', props<{ readonly document: Document }>());
+
+export const fetchDocumentFailure = createAction('[Document API] Fetch Document Failure', props<{ readonly error: any }>());
+
+export const clearDocument = createAction('[Document] Clear Document');
+
 export const purge = createAction('[Document] Purge');

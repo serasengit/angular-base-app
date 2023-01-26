@@ -40,10 +40,26 @@ mat-form-field {
     padding-right: 0px !important;
 }
 
+.mat-card-header {
+    color: white !important;
+    background: mat.get-color-from-palette($accent, 400) !important;
+    padding-top: 10px !important;
+    justify-content: center !important;
+    text-align: center !important;
+    button {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+}
 .mat-card-title {
-    color: mat.get-color-from-palette($primary, 700) !important;
-    padding: 15px !important;
-    text-align: center;
+    color: white !important;
+    font-size: 18px;
+}
+.mat-card-subtitle {
+    color: white !important;
+    font-size: 14px;
+    padding-top: 5px;
 }
 .mat-card-content {
     padding: 20px;
@@ -63,30 +79,58 @@ mat-form-field {
 ::-webkit-scrollbar-thumb {
     background-color: mat.get-color-from-palette($secondary);
 }
-
 // Mat table styles
-.mat-row:nth-child(even) {
-    background-color: mat.get-color-from-palette($secondary, 50);
-}
-.mat-cell {
-    padding: 5px 25px;
-}
-.mat-table {
-    min-width: 100%;
-    max-width: 100%;
-    display: table;
-    border-collapse: collapse;
-}
-
-.mat-header-cell {
-    padding: 0px 25px;
-    color: white !important;
-    font-size: 13px !important;
-    background: mat.get-color-from-palette($secondary, 700);
-    text-transform: uppercase;
-}
-.mat-header-row {
-    position: sticky;
-    position: -webkit-sticky;
-    top: 0;
+.table-responsive {
+    display: block;
+    overflow-x: auto;
+    .mat-table {
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        display: table;
+        border-collapse: collapse;
+        margin: 0px;
+    }
+    .mat-row,
+    .mat-header-row {
+        display: table-row;
+    }
+    .mat-cell {
+        word-wrap: initial;
+        display: table-cell;
+        padding: 5px 25px;
+        line-break: unset;
+        width: auto;
+        //white-space: nowrap;
+        overflow: hidden;
+        vertical-align: middle;
+    }
+    .mat-header-cell {
+        word-wrap: initial;
+        display: table-cell;
+        padding: 15px 25px;
+        line-break: unset;
+        white-space: nowrap;
+        width: auto;
+        overflow: hidden;
+        vertical-align: middle;
+        color: white !important;
+        font-size: 13px !important;
+        background: mat.get-color-from-palette($secondary, 700);
+        text-transform: uppercase;
+    }
+    .mat-row:nth-child(even) {
+        //background-color: mat.get-color-from-palette($secondary, 50);
+    }
+    .mat-row:hover {
+        background: mat.get-color-from-palette($primary, 50);
+    }
+    .mat-header-row {
+        position: sticky;
+        position: -webkit-sticky;
+        top: 0;
+    }
+    .highlight {
+        background: mat.get-color-from-palette($primary, 50);
+    }
 }

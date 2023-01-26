@@ -2,15 +2,23 @@
 // Import theme variables
 @import '../../../../../styles/variables.scss';
 
-.documents {
+.document-list {
     &__filter {
         mat-form-field {
             width: 100%;
         }
     }
     &__table {
+        height: calc(100vh - 250px);
         overflow: auto;
-        height: 600px;
+        width: 100%;
+        .mat-row:hover {
+            cursor: pointer;
+        }
+        // Columns styles
+        .mat-column-reference {
+            white-space: nowrap;
+        }
     }
     &__table::-webkit-scrollbar {
         width: 5px !important;

@@ -1,4 +1,4 @@
-import { Directive, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { Directive, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -8,8 +8,11 @@ import { LocalDatePipe } from '@shared/pipes/local-date.pipe';
 @Directive()
 export abstract class DataSourceBase<T, K> implements OnInit, OnChanges {
     @Input() records: T[];
+    @Input() selectedRecord: T;
+
     @ViewChild(MatSort, { static: true }) sort: MatSort;
     @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+    @Output() readonly changeRecord = new EventEmitter<K>();
 
     dataSource: MatTableDataSource<K>;
     readonly pageSizeOptions = [5, 15, 20];
