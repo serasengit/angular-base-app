@@ -13,6 +13,7 @@ import {
     setFilter,
 } from '@features/documents/store/actions/documents.actions';
 import { createReducer, on } from '@ngrx/store';
+
 import { DocumentFilter } from '../../models/document-filter.model';
 import { Document } from '../../models/document.model';
 
@@ -74,7 +75,7 @@ export const documentReducer = createReducer(
         ...state,
         document: action.document,
     })),
-    on(clearDocument, (state, action) => ({
+    on(clearDocument, (state) => ({
         ...state,
         document: initialState.document,
     })),

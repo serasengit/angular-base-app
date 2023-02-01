@@ -78,6 +78,10 @@ export class DocumentsContainer implements OnDestroy {
         this.store.dispatch(clearDocument());
     }
 
+    showDocuments(documents: Document[], document: Document, deviceType: DeviceType): boolean {
+        return (documents && deviceType === DeviceType.ExtraLarge) || (documents && !document && deviceType !== DeviceType.ExtraLarge);
+    }
+
     ngOnDestroy(): void {
         this.store.dispatch(purge());
     }

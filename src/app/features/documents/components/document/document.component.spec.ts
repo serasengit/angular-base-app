@@ -2,8 +2,8 @@ import { HarnessLoader } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatInputHarness } from '@angular/material/input/testing';
-import { By } from '@angular/platform-browser';
+import { MatCellHarness } from '@angular/material/table/testing';
+import { MatTabHarness } from '@angular/material/tabs/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 import { AppRoutingModule } from '@app/app-routing.module';
@@ -17,6 +17,7 @@ import { StoreModule } from '@ngrx/store';
 import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from '@shared/shared.module';
 import { of } from 'rxjs';
+import { DOCUMENT_MOCK_RESPONSE } from 'src/assets/mocks/responses/document.mock-response';
 import { DOCUMENTS_MOCK_RESPONSE } from 'src/assets/mocks/responses/documents.mock-response';
 import { environment } from 'src/environments/environment';
 
@@ -28,10 +29,12 @@ import { DocumentService } from '../../services/document.service';
 import { DocumentEffects } from '../../store/effects/documents.effects';
 import { documentReducer } from '../../store/reducers/documents.reducer';
 import { DocumentFilterComponent } from '../document-filter/document-filter.component';
-import { DocumentListComponent } from './document-list.component';
+import { DocumentListComponent } from '../document-list/document-list.component';
+import { DocumentDetailComponent } from './components/document-detail/document-detail.component';
+import { DocumentComponent } from './document.component';
 
-describe('Documents: Document List Component', () => {
-    let component: DocumentListComponent;
+describe('Documents: Document Component', () => {
+    let component: DocumentComponent;
     let loader: HarnessLoader;
     let fixture: ComponentFixture<DocumentsContainer>;
     let router: Router;
@@ -53,7 +56,7 @@ describe('Documents: Document List Component', () => {
                 HttpClientModule,
                 SharedModule,
             ],
-            declarations: [DocumentsContainer, DocumentFilterComponent, DocumentListComponent],
+            declarations: [DocumentsContainer, DocumentListComponent, DocumentFilterComponent, DocumentComponent, DocumentDetailComponent],
             providers: [
                 DocumentResolver,
                 GroupService,
@@ -72,22 +75,17 @@ describe('Documents: Document List Component', () => {
         component = fixture.debugElement.componentInstance;
         // Listeners
         spyOn(documentService, 'find').and.returnValue(of(DOCUMENTS_MOCK_RESPONSE));
+        spyOn(documentService, 'findById').and.returnValue(of(DOCUMENT_MOCK_RESPONSE));
         await router.navigateByUrl(ModuleLink.Documents);
         await fixture.detectChanges();
     });
-
     it('should create', () => {
         expect(component).toBeTruthy();
     });
-    it('should show table rows', async () => {
-        const documentListComponent = fixture.debugElement.query(By.directive(DocumentListComponent));
-        expect((<DocumentListComponent>documentListComponent.componentInstance).dataSource.data.length).toBe(3);
-    });
-    it('should filter table rows', async () => {
-        const documentListComponent = fixture.debugElement.query(By.directive(DocumentListComponent));
-        expect((<DocumentListComponent>documentListComponent.componentInstance).dataSource.filteredData.length).toBe(3);
-        const filterInput = await loader.getHarness(MatInputHarness.with({ selector: '#filter' }));
-        await filterInput.setValue('Juan Sereno Martínez');
-        expect((<DocumentListComponent>documentListComponent.componentInstance).dataSource.filteredData.length).toBe(1);
+    it('should show document component', async () => {
+        const documentRow = <MatCellHarness>await loader.getHarness(MatCellHarness);
+        (await documentRow.host()).click();
+        const documentTab = <MatTabHarness>await loader.getHarness(MatTabHarness.with({ label: 'DETAIL' }));
+        expect(documentTab).toBeTruthy();
     });
 });

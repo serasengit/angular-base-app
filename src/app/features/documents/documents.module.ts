@@ -15,9 +15,11 @@ import { PromoterService } from '../promoters/services/promoter-service';
 import { DocumentFilterComponent } from './components/document-filter/document-filter.component';
 import { DocumentService } from './services/document.service';
 import { DocumentListComponent } from './components/document-list/document-list.component';
+import { DocumentDetailComponent } from './components/document/components/document-detail/document-detail.component';
+import { DocumentComponent } from './components/document/document.component';
 
 @NgModule({
-    declarations: [DocumentsContainer, DocumentFilterComponent, DocumentListComponent],
+    declarations: [DocumentsContainer, DocumentFilterComponent, DocumentListComponent, DocumentDetailComponent, DocumentComponent],
     imports: [SharedModule, CommonModule, StoreModule.forFeature('document', documentReducer), EffectsModule.forFeature([DocumentEffects])],
     providers: [DocumentResolver, DocumentService, PromoterService, DocumentStateService, DocumentTypeService, GroupService],
 })

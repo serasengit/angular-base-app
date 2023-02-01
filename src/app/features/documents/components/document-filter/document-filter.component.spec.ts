@@ -31,7 +31,7 @@ import { DocumentEffects } from '../../store/effects/documents.effects';
 import { documentReducer } from '../../store/reducers/documents.reducer';
 import { DocumentFilterComponent } from './document-filter.component';
 
-describe('Document: Filter Component', () => {
+describe('Documents: Document Filter Component', () => {
     let component: DocumentFilterComponent;
     let loader: HarnessLoader;
     let fixture: ComponentFixture<DocumentsContainer>;

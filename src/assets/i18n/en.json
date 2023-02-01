@@ -18,6 +18,8 @@
     "languages": "Languages",
     "observations": "Observations",
     "promoter": "Promoter",
+    "promoter_email": "Promoter email",
+    "promoter_name": "Promoter name",
     "reference": "Reference",
     "registration_date": "Registration date",
     "search": "Search",

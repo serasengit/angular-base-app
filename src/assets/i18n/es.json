@@ -18,6 +18,8 @@
     "languages": "Idiomas",
     "observations": "Observaciones",
     "promoter": "Promotor",
+    "promoter_email": "Email promotor",
+    "promoter_name": "Nombre promotor",
     "reference": "Referencia",
     "registration_date": "Fecha de alta",
     "search": "Buscar",

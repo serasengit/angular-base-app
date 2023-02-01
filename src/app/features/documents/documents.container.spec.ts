@@ -5,7 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { DocumentsContainer } from './documents.container';
 import { documentReducer } from './store/reducers/documents.reducer';
 
-describe('Document: Container', () => {
+describe('Documents: Document Container Component', () => {
     let component: DocumentsContainer;
     let fixture: ComponentFixture<DocumentsContainer>;
     beforeEach(async () => {

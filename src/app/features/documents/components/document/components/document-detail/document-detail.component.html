@@ -1,0 +1,52 @@
+<div class="document-detail container pt-4">
+    <!-- StartDate -->
+    <div class="document-detail__field row">
+        <div class="document-detail__field__label col-6">{{ 'registration_date' | translate | uppercase }}</div>
+        <div class="document-detail__field__value col-6">{{ document.startTime | localDate : CustomDateFormat.ShortDate }}</div>
+    </div>
+    <!-- Group -->
+    <div class="document-detail__field row">
+        <div class="document-detail__field__label col-6">{{ 'group' | translate | uppercase }}</div>
+        <div class="document-detail__field__value col-6">{{ document.group.parent.code }} - {{ document.group.parent.description }}</div>
+    </div>
+    <!-- Type -->
+    <div class="document-detail__field row">
+        <div class="document-detail__field__label col-6">{{ 'type' | translate | uppercase }}</div>
+        <div class="document-detail__field__value col-6">{{ document.type.code }} - {{ document.type.description }}</div>
+    </div>
+    <!-- State -->
+    <div class="document-detail__field row">
+        <div class="document-detail__field__label col-6">{{ 'state' | translate | uppercase }}</div>
+        <div class="document-detail__field__value col-6">{{ document.state.description }}</div>
+    </div>
+    <!-- Sref -->
+    <div class="document-detail__field row">
+        <div class="document-detail__field__label col-6">{{ 'sref' | translate | uppercase }}</div>
+        <div class="document-detail__field__value col-6">{{ document.sref }}</div>
+    </div>
+    <!-- Promoter name -->
+    <div class="document-detail__field row">
+        <div class="document-detail__field__label col-6">{{ 'promoter_name' | translate | uppercase }}</div>
+        <div class="document-detail__field__value col-6">{{ document?.promoter?.fullName }}</div>
+    </div>
+    <!-- Promoter email -->
+    <div class="document-detail__field row">
+        <div class="document-detail__field__label col-6">{{ 'promoter_email' | translate | uppercase }}</div>
+        <div class="document-detail__field__value col-6">{{ document?.promoter?.email }}</div>
+    </div>
+    <!-- Observations -->
+    <div class="document-detail__field row">
+        <div class="document-detail__field__label col-6">{{ 'observations' | translate | uppercase }}</div>
+        <div class="document-detail__field__value col-6">{{ document.observations }}</div>
+    </div>
+    <!-- Keywords -->
+    <div class="document-detail__field row">
+        <div class="document-detail__field__label col-6">{{ 'keywords' | translate | uppercase }}</div>
+        <div class="document-detail__field__value col-6">{{ document.keywords }}</div>
+    </div>
+    <!-- EndDate -->
+    <div class="document-detail__field row">
+        <div class="document-detail__field__label col-6">{{ 'closed_date' | translate | uppercase }}</div>
+        <div class="document-detail__field__value col-6">{{ document.endTime | localDate : CustomDateFormat.ShortDate }}</div>
+    </div>
+</div>

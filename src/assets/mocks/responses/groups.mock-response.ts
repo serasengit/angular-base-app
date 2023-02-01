@@ -1,4 +1,4 @@
-import { Group } from '@features/group/models/group-model';
+import { Group } from '@features/groups/models/group-model';
 
 export const GROUPS_MOCK_RESPONSE: Group[] = [
     {
