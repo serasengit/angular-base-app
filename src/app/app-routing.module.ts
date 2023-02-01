@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ModuleCode } from '@core/models/module.model';
-import { DocumentContainer } from '@features/documents/document/document.container';
-import { DocumentResolver } from '@features/documents/document/resolvers/document.resolver';
+import { DocumentsContainer } from '@features/documents/documents.container';
+import { DocumentResolver } from '@features/documents/resolvers/document.resolver';
 
 const routes: Routes = [
     {
         path: ModuleCode.Documents,
-        component: DocumentContainer,
+        component: DocumentsContainer,
         resolve: {
             data: DocumentResolver,
         },

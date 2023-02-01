@@ -1,4 +1,4 @@
-import { Document } from '@features/documents/document/models/document.model';
+import { Document } from '@features/documents/models/document.model';
 
 export const DOCUMENTS_MOCK_RESPONSE: Document[] = [
     {

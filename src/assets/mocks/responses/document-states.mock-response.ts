@@ -1,4 +1,4 @@
-import { DocumentState } from '@features/documents/document/models/document-state.model';
+import { DocumentState } from '@features/documents/models/document-state.model';
 
 export const DOCUMENT_STATES_MOCK_RESPONSE: DocumentState[] = [
     {

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { DocumentModule } from '@features/documents/document/document.module';
-import { PromoterModule } from '@features/documents/promoter/promoter.module';
-import { GroupModule } from '@features/group/group.module';
+import { DocumentsModule } from './documents/documents.module';
+import { GroupsModule } from './groups/groups.module';
+import { PromotersModule } from './promoters/promoters.module';
 
 @NgModule({
-    imports: [DocumentModule, PromoterModule, GroupModule],
+    imports: [DocumentsModule, PromotersModule, GroupsModule],
     exports: [],
 })
 export class FeaturesModule {}

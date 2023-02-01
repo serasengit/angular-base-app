@@ -1,4 +1,4 @@
-import { DocumentType } from '@features/documents/document/models/document-type.model';
+import { DocumentType } from '@features/documents/models/document-type.model';
 
 export const DOCUMENT_TYPES_MOCK_RESPONSE: DocumentType[] = [
     {
