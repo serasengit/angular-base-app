@@ -8,7 +8,7 @@
                 </span>
             </mat-toolbar-row>
         </mat-toolbar>
-        <app-sidenav-left-menu [modules]="modules" (changeModule)="setModule($event)"> </app-sidenav-left-menu>
+        <app-sidenav-left-menu (changeModule)="setModule($event)"> </app-sidenav-left-menu>
     </mat-sidenav>
     <mat-sidenav-content class="sidenav__content">
         <app-sidenav-top-menu (toggleSidenav)="toggleSidenav()" (changeLanguage)="setLanguage($event)"></app-sidenav-top-menu>

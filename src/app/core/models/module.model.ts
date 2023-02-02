@@ -1,10 +1,14 @@
 export enum ModuleLink {
     Home = '',
     Documents = 'documents',
+    Contracts = 'contracts',
+    Promoters = 'promoters',
 }
 
 export enum ModuleCode {
     Documents = 'documents',
+    Contracts = 'contracts',
+    Promoters = 'promoters',
 }
 
 export interface Module {
