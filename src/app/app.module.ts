@@ -1,21 +1,26 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from '@app/app-routing.module';
+import { AppComponent } from '@app/app.component';
+import { appReducer } from '@app/store/reducers/app.reducers';
 import { CoreModule } from '@core/core.module';
 import { ENVIRONMENT } from '@core/tokens/environment.token';
 import { FeaturesModule } from '@features/features.module';
-import { NgModule } from '@angular/core';
-import { SharedModule } from './shared/shared.module';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { StoreModule } from '@ngrx/store';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { appReducer } from './store/reducers/app.reducers';
-import { environment } from 'src/environments/environment';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { SharedModule } from '@shared/shared.module';
+import { environment } from 'src/environments/environment';
+import { registerLocaleData } from '@angular/common';
+import localeEn from '@angular/common/locales/en';
+import localeEs from '@angular/common/locales/es';
+
+registerLocaleData(localeEs);
+registerLocaleData(localeEn);
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -48,7 +53,10 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
         }),
         EffectsModule.forRoot([]),
     ],
-    providers: [{ provide: ENVIRONMENT, useValue: environment }],
+    providers: [
+        { provide: ENVIRONMENT, useValue: environment },
+        { provide: LOCALE_ID, useValue: window.navigator.language },
+    ],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

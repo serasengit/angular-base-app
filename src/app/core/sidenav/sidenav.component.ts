@@ -3,7 +3,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { DeviceType, Language } from '@app/app.component';
 import { setLanguage, setModule } from '@app/store/actions/app.actions';
 import { getDeviceType } from '@app/store/selectors/app.selectors';
-import { Module } from '@core/models/module.model';
+import { Module, ModuleCode, ModuleLink } from '@core/models/module.model';
 import { select, Store } from '@ngrx/store';
 
 import { AppState } from '../../store/reducers/app.reducers';
@@ -19,30 +19,9 @@ export class SidenavComponent {
     readonly DeviceType = DeviceType;
     readonly modules: Module[] = [
         {
-            id: 1,
-            code: 'dashboard',
-            description: 'Dashboard',
-            link: '/dashboard',
-            icon: 'dashboard',
-            order: 1,
-        },
-        {
-            id: 2,
-            code: 'dashboard',
-            description: 'Dashboard',
-            link: '/dashboard',
-            icon: 'dashboard',
-            order: 2,
-            modules: [
-                {
-                    id: 1,
-                    code: 'dashboard',
-                    description: 'Dashboard',
-                    link: '/dashboard',
-                    icon: 'dashboard',
-                    order: 1,
-                },
-            ],
+            code: ModuleCode.Documents,
+            link: ModuleLink.Documents,
+            icon: 'assignment',
         },
     ];
 

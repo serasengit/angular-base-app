@@ -1,0 +1,100 @@
+<div class="document-filter">
+    <mat-card class="mat-elevation-z0">
+        <mat-card-header>
+            <mat-card-title>
+                {{ 'documents_search' | translate }}
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="form" class="row mt-4">
+                <!--Group-->
+                <mat-form-field class="col-6 col-xl-2">
+                    <mat-label>{{ 'group' | translate }}</mat-label>
+                    <mat-select id="group" formControlName="group" [matTooltip]="'group' | translate">
+                        <mat-option *ngFor="let group of groups" [value]="group">
+                            {{ group.code }} - {{ group.description }}
+                        </mat-option></mat-select
+                    >
+                    <button mat-button matSuffix *ngIf="group.value" mat-icon-button (click)="clear([group])" color="warn">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+                <!--Sub Group-->
+                <mat-form-field class="col-6 col-xl-2">
+                    <mat-label>{{ 'sub_group' | translate }}</mat-label>
+                    <mat-select id="subGroup" formControlName="subGroup" [matTooltip]="'subGroup' | translate">
+                        <mat-option *ngFor="let subGroup of group?.value?.groups" [value]="subGroup">
+                            {{ subGroup.code }} - {{ subGroup.description }}
+                        </mat-option></mat-select
+                    >
+                    <button mat-button matSuffix *ngIf="subGroup.value" mat-icon-button (click)="clear([subGroup])" color="warn">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+                <!--Document Type-->
+                <mat-form-field class="col-6 col-xl-2">
+                    <mat-label>{{ 'type' | translate }}</mat-label>
+                    <mat-select id="documentType" formControlName="documentType" [matTooltip]="'type' | translate">
+                        <mat-option *ngFor="let documentType of documentTypes" [value]="documentType">
+                            {{ documentType.code }} - {{ documentType.description }}
+                        </mat-option></mat-select
+                    >
+                    <button mat-button matSuffix *ngIf="documentType.value" mat-icon-button (click)="clear([documentType])" color="warn">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+                <!--Document State-->
+                <mat-form-field class="col-6 col-xl-2">
+                    <mat-label>{{ 'state' | translate }}</mat-label>
+                    <mat-select id="documentState" formControlName="documentState" [matTooltip]="'state' | translate">
+                        <mat-option *ngFor="let documentState of documentStates" [value]="documentState">
+                            {{ documentState.description }}
+                        </mat-option></mat-select
+                    >
+                    <button mat-button matSuffix *ngIf="documentState.value" mat-icon-button (click)="clear([documentState])" color="warn">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+                <!--Start Date-->
+                <mat-form-field class="col-6 col-xl-2">
+                    <mat-label>{{ 'registration_date' | translate }}</mat-label>
+                    <input
+                        id="startDate"
+                        matInput
+                        [matDatepicker]="startDatePicker"
+                        [placeholder]="'registration_date' | translate"
+                        formControlName="startDate"
+                        readonly="true"
+                    />
+                    <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #startDatePicker color="accent"></mat-datepicker>
+                    <button mat-button matSuffix *ngIf="startDate.value" mat-icon-button (click)="clear([startDate])" color="warn">
+                        <mat-icon></mat-icon>
+                    </button>
+                </mat-form-field>
+                <!--End Date-->
+                <mat-form-field class="col-6 col-xl-2">
+                    <mat-label>{{ 'closed_date' | translate }}</mat-label>
+                    <input
+                        id="endDate"
+                        matInput
+                        [matDatepicker]="endDatePicker"
+                        [placeholder]="'closed_date' | translate"
+                        formControlName="endDate"
+                        readonly="true"
+                    />
+                    <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #endDatePicker color="accent"></mat-datepicker>
+                    <button mat-button matSuffix *ngIf="endDate.value" mat-icon-button (click)="clear([endDate])" color="warn">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+            </form>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="accent" (click)="submit()" [matTooltip]="'search' | translate">
+                {{ 'search' | translate }} <mat-icon>search</mat-icon>
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>

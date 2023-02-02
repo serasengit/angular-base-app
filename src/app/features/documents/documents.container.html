@@ -1,0 +1,26 @@
+<div class="document container-fluid p-4" *ngIf="params$ | async; let params;">
+    <div class="row" *ngIf="!params.hasError">
+        <!-- Document filter-->
+        <div class="document__filter col-12">
+            <app-document-filter
+                [groups]="params.groups"
+                [documentStates]="params.documentStates"
+                [documentTypes]="params.documentTypes"
+                (changeValue)="setFilter($event)"
+                (onSubmit)="onSubmit($event)"
+            ></app-document-filter>
+        </div>
+        <!-- Document list-->
+        <div
+            [class]="params.document && params.deviceType === DeviceType.ExtraLarge ? 'document__list col-8' : 'document__list col-12'"
+            *ngIf="showDocuments(params.documents,params.document,params.deviceType)"
+        >
+            <app-document-list [records]="params.documents" [selectedRecord]="params.document" (changeRecord)="fetchDocument($event.id)">
+            </app-document-list>
+        </div>
+        <!-- Document detail-->
+        <div @flyInOut class="document__detail col-12 col-xl-4" *ngIf="params.document">
+            <app-document [document]="params.document" [deviceType]="params.deviceType" (onClose)="clearDocument()"> </app-document>
+        </div>
+    </div>
+</div>
