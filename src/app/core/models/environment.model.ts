@@ -1,6 +1,7 @@
 export enum EnvironmentType {
     Development = 'dev',
     Production = 'prod',
+    OpenShiftDev = 'openshift-dev',
 }
 
 export interface Environment {

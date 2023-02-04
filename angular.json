@@ -52,6 +52,27 @@
                             ],
                             "outputHashing": "all"
                         },
+                        "openshift-dev": {
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                }
+                            ],
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.openshift-dev.ts"
+                                }
+                            ],
+                            "outputHashing": "all"
+                        },
                         "dev": {
                             "buildOptimizer": false,
                             "optimization": false,
@@ -71,6 +92,9 @@
                         },
                         "dev": {
                             "browserTarget": "chg-gestor-documental-front-end:build:dev"
+                        },
+                        "openshift-dev": {
+                            "browserTarget": "chg-gestor-documental-front-end:build:openshift-dev"
                         }
                     },
                     "defaultConfiguration": "dev"
