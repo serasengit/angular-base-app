@@ -21,7 +21,7 @@
         }
         .closed-document {
             .mat-column-state {
-                color: mat.get-color-from-palette($accent);
+                color: mat.get-color-from-palette($accent, 300);
             }
         }
     }
