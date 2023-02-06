@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { DocumentStateDescription } from '@features/documents/models/document-state.model';
 import { DataSourceBase } from '@shared/components/datasource/data-source.base';
 import { CustomDateFormat } from '@shared/pipes/local-date.pipe';
 import { Document } from '../../models/document.model';
@@ -37,6 +38,7 @@ enum DocumentColumn {
 export class DocumentListComponent extends DataSourceBase<Document, DocumentRow> {
     readonly DocumentColumn = DocumentColumn;
     readonly CustomDateFormat = CustomDateFormat;
+    readonly DocumentStateDescription = DocumentStateDescription;
 
     protected getRow(document: Document): DocumentRow {
         return {

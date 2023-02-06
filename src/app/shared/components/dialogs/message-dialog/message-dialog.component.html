@@ -1,9 +1,6 @@
 <div class="message-dialog">
     <div class="message-dialog__icon">
-        <mat-icon
-            [color]="data.type === MessageType.Informative ? 'primary' : data.type === MessageType.Error ? 'error' : 'warn'"
-            [inline]="true"
-        >
+        <mat-icon [color]="data.type === MessageType.Informative ? 'primary' : 'warn'" [inline]="true">
             {{ data.type === MessageType.Informative ? 'info' : data.type === MessageType.Error ? 'error' : 'warning' }}
         </mat-icon>
     </div>
@@ -14,12 +11,7 @@
         <p *ngFor="let message of data.messages">{{ message }}</p>
     </div>
     <div mat-dialog-actions class="message-dialog__actions">
-        <button
-            mat-button
-            mat-dialog-close
-            mat-stroked-button
-            [color]="data.type === MessageType.Informative ? 'primary' : data.type === MessageType.Error ? 'error' : 'warn'"
-        >
+        <button mat-button mat-dialog-close mat-stroked-button [color]="data.type === MessageType.Informative ? 'primary' : 'warn'">
             {{ 'close' | translate }}
         </button>
     </div>

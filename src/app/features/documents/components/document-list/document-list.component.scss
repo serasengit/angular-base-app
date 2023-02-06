@@ -19,6 +19,11 @@
         .mat-column-reference {
             white-space: nowrap;
         }
+        .closed-document {
+            .mat-column-state {
+                color: mat.get-color-from-palette($accent);
+            }
+        }
     }
     &__table::-webkit-scrollbar {
         width: 5px !important;

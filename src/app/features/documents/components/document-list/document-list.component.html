@@ -70,12 +70,14 @@
                 <mat-header-cell *matHeaderCellDef mat-sort-header>
                     {{ 'state' | translate }}
                 </mat-header-cell>
-                <mat-cell *matCellDef="let row"> {{ row.state }}</mat-cell>
+                <mat-cell *matCellDef="let row">
+                    <strong>{{ row.state | uppercase }}</strong></mat-cell
+                >
             </ng-container>
             <!-- Displayed Columns -->
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row
-                [class]="{ highlight: selectedRecord?.id == row.id }"
+                [class]="{ highlight: selectedRecord?.id == row.id, 'closed-document': row.state == DocumentStateDescription.Finalized }"
                 (click)="changeRecord.emit(row)"
                 *matRowDef="let row; columns: displayedColumns"
             >
