@@ -1,10 +1,6 @@
 @import 'theme.scss';
 
-// Default palettes
 $primary: map-get($chg-main-theme, primary);
+$secondary: map-get($chg-secondary-theme, primary);
 $accent: map-get($chg-main-theme, accent);
 $warn: map-get($chg-main-theme, warn);
-// Custom palettes
-$secondary: map-get($chg-main-theme, secondary);
-$success: map-get($chg-main-theme, success);
-$error: map-get($chg-main-theme, error);

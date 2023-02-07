@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { Module, ModuleCode, ModuleLink } from '@core/models/module.model';
+import { Module } from '@core/models/module.model';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const version = require('package.json').version;
 
@@ -10,13 +10,7 @@ const version = require('package.json').version;
     styleUrls: ['./sidenav-left-menu.component.scss'],
 })
 export class SidenavLeftMenuComponent {
-    readonly modules: Module[] = [
-        {
-            code: ModuleCode.Documents,
-            link: ModuleLink.Documents,
-            icon: 'folder_shared',
-        },
-    ];
+    @Input() modules: Module[];
     @Output() changeModule = new EventEmitter<Module>();
 
     constructor(private readonly router: Router) {}
