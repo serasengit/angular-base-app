@@ -66,16 +66,28 @@ export class HttpConfigInterceptor implements HttpInterceptor {
     }
 
     private showMessages(APIErrors: APIError[]): void {
-        const errorMessages: string[] = APIErrors.map((APIError) =>
+        let data: MessageDialogData;
+        // Retrieve API messages
+        const messages: string[] = APIErrors.map((APIError) =>
             APIError.errors?.length > 0
                 ? APIError.errors.map((error: { code: string; message: string }) => error.message)
                 : APIError.message
         ).flat();
-        const data: MessageDialogData = {
-            type: MessageType.Error,
-            title: `an_error_has_ocurred_while_processing_the_request`,
-            messages: errorMessages,
-        };
+        // Multiple API messages
+        if (APIErrors?.length > 1) {
+            data = {
+                type: MessageType.Error,
+                title: `an_error_has_ocurred_while_processing_the_request`,
+                messages,
+            };
+        } // One API message
+        else {
+            data = {
+                type: this.getMessageType(APIErrors[0]),
+                title: messages[0],
+            };
+        }
+        // Open message dialog component
         this.dg
             .open(MessageDialogComponent, {
                 width: '500px',
@@ -83,5 +95,18 @@ export class HttpConfigInterceptor implements HttpInterceptor {
             })
             .afterClosed()
             .pipe(take(1));
+    }
+
+    private getMessageType(APIError: APIError): MessageType {
+        switch (APIError.status) {
+            case 404:
+                return MessageType.Informative;
+            case 200:
+            case 201:
+            case 202:
+                return MessageType.Success;
+            default:
+                return MessageType.Error;
+        }
     }
 }
