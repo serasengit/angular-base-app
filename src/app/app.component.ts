@@ -1,5 +1,4 @@
-import { Component, HostListener, Inject, LOCALE_ID, OnDestroy } from '@angular/core';
-import { DateAdapter } from '@angular/material/core';
+import { Component, HostListener, OnDestroy } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject, takeUntil } from 'rxjs';
@@ -35,20 +34,15 @@ export const DEFAULT_LANGUAGE = Language.Spanish;
 export class AppComponent implements OnDestroy {
     private readonly unsubscribe$: Subject<void> = new Subject<void>();
     // Observable language listener that changes the app language  when it is selected from sidenav component
-    private readonly language$ = this.store.pipe(select(getLanguage), takeUntil(this.unsubscribe$)).subscribe((language: Language) => {
-        this.translate.use(language);
-        this.dateAdapter.setLocale(language);
-    });
+    private readonly language$ = this.store
+        .pipe(select(getLanguage), takeUntil(this.unsubscribe$))
+        .subscribe((language: Language) => {
+            this.translate.use(language);
+        });
 
-    constructor(
-        @Inject(LOCALE_ID) public locale: string,
-        readonly store: Store<AppState>,
-        readonly translate: TranslateService,
-        readonly dateAdapter: DateAdapter<Date>
-    ) {
+    constructor(readonly store: Store<AppState>, readonly translate: TranslateService) {
         translate.addLangs([Language.Spanish, Language.English]); // Languages supported by the application
         translate.setDefaultLang(DEFAULT_LANGUAGE);
-        this.dateAdapter.setLocale(this.locale);
     }
 
     // Function which stores in the app store the device type in which the app is being used (this observable is updating every time the user modifies the browser screen width)

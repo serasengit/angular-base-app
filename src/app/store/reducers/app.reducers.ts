@@ -1,7 +1,8 @@
 import { DEFAULT_LANGUAGE, DeviceType, getDevice, Language } from '@app/app.component';
 import { Module } from '@core/models/module.model';
 import { createReducer, on } from '@ngrx/store';
-import { setDeviceType, showSpinner, hideSpinner, setLanguage, setModule, purge } from '@app/store/actions/app.actions';
+
+import { hideSpinner, purge, setDeviceType, setLanguage, setModule, showSpinner } from '../actions/app.actions';
 
 export interface AppState {
     deviceType: DeviceType;
