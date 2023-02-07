@@ -65,6 +65,7 @@ mat-form-field {
 .mat-card-title {
     color: white !important;
     font-size: 18px;
+    font-weight: bolder;
 }
 .mat-card-subtitle {
     color: white !important;
@@ -114,7 +115,7 @@ mat-form-field {
         //white-space: nowrap;
         overflow: hidden;
         vertical-align: middle;
-        font-size: 12.5px !important;
+        font-size: 13px !important;
     }
     .mat-header-cell {
         word-wrap: initial;
@@ -126,9 +127,10 @@ mat-form-field {
         overflow: hidden;
         vertical-align: middle;
         color: white !important;
-        font-size: 13.5px !important;
+        font-size: 15px !important;
         background: mat.get-color-from-palette($secondary, 700);
         text-transform: uppercase;
+        font-weight: bolder !important;
     }
     .mat-row:nth-child(even) {
         //background-color: mat.get-color-from-palette($secondary, 50);
