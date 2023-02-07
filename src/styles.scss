@@ -114,18 +114,19 @@ mat-form-field {
         //white-space: nowrap;
         overflow: hidden;
         vertical-align: middle;
+        font-size: 12.5px !important;
     }
     .mat-header-cell {
         word-wrap: initial;
         display: table-cell;
-        padding: 18px 25px;
+        padding: 15px 25px;
         line-break: unset;
         white-space: nowrap;
         width: auto;
         overflow: hidden;
         vertical-align: middle;
         color: white !important;
-        font-size: 13px !important;
+        font-size: 13.5px !important;
         background: mat.get-color-from-palette($secondary, 700);
         text-transform: uppercase;
     }
