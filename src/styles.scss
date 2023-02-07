@@ -15,6 +15,17 @@
 // Import theme variables
 @import 'app/styles/variables.scss';
 
+// Mat-colors
+.mat-secondary {
+    color: mat.get-color-from-palette($secondary);
+}
+.mat-success {
+    color: mat.get-color-from-palette($success);
+}
+.mat-error {
+    color: mat.get-color-from-palette($error);
+}
+
 // Mat divider
 .mat-divider {
     border-top-color: mat.get-color-from-palette($secondary) !important;
@@ -27,7 +38,6 @@ mat-form-field {
         font-size: 16px !important;
     }
 }
-
 // Mat card
 .mat-card {
     border: 0.5px solid mat.get-color-from-palette($secondary, 200) !important;
