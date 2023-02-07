@@ -16,16 +16,6 @@ export class SidenavLeftMenuComponent {
             link: ModuleLink.Documents,
             icon: 'folder_shared',
         },
-        {
-            code: ModuleCode.Contracts,
-            link: ModuleLink.Contracts,
-            icon: 'assignment',
-        },
-        {
-            code: ModuleCode.Promoters,
-            link: ModuleLink.Promoters,
-            icon: 'person',
-        },
     ];
     @Output() changeModule = new EventEmitter<Module>();
 
