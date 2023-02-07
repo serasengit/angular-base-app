@@ -17,34 +17,6 @@ export class SidenavComponent {
     readonly deviceType$ = this.appStore.pipe(select(getDeviceType));
 
     readonly DeviceType = DeviceType;
-    readonly modules: Module[] = [
-        {
-            id: 1,
-            code: 'dashboard',
-            description: 'Dashboard',
-            link: '/dashboard',
-            icon: 'dashboard',
-            order: 1,
-        },
-        {
-            id: 2,
-            code: 'dashboard',
-            description: 'Dashboard',
-            link: '/dashboard',
-            icon: 'dashboard',
-            order: 2,
-            modules: [
-                {
-                    id: 1,
-                    code: 'dashboard',
-                    description: 'Dashboard',
-                    link: '/dashboard',
-                    icon: 'dashboard',
-                    order: 1,
-                },
-            ],
-        },
-    ];
 
     @ViewChild(MatSidenav) sidenav?: MatSidenav;
 

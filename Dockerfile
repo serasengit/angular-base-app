@@ -33,11 +33,11 @@ COPY ["package.json", "package-lock.json*","tsconfig.json","angular.json", "/app
 # Clean cached node_modules
 RUN npm cache clean --force
 # Install app dependencies
-RUN npm ci --only=production
+RUN npm ci --only=prod
 # Copy files from local machine to virtual directory in docker image
 COPY . /app
 # Default build configuration.
-ARG CONFIGURATION=production
+ARG CONFIGURATION=prod
 RUN echo "Environment: ${CONFIGURATION}"
 RUN ["sh", "-c", "npm run build -- --c ${CONFIGURATION}"]
 
