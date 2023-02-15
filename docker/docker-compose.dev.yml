@@ -1,0 +1,20 @@
+version: '3'
+services:
+    dependencies:
+        container_name: angular-base-app-dev-dependencies
+        image: angular-base-app-dev-dependencies
+    integration-tests:
+        container_name: angular-base-app-dev-integration-tests
+        image: angular-base-app-dev-integration-tests
+    release:
+        container_name: angular-base-app-dev-release
+        image: angular-base-app-dev-release
+        build:
+            args:
+                CONFIGURATION: dev
+    nginx:
+        container_name: angular-base-app-dev-app
+        image: angular-base-app-dev-app
+        build:
+            args:
+                CONFIGURATION: dev

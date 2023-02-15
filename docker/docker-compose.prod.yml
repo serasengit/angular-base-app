@@ -1,0 +1,20 @@
+version: '3'
+services:
+    dependencies:
+        container_name: angular-base-app-prod-dependencies
+        image: angular-base-app-prod-dependencies
+    integration-tests:
+        container_name: angular-base-app-prod-integration-tests
+        image: angular-base-app-prod-integration-tests
+    release:
+        container_name: angular-base-app-prod-release
+        image: angular-base-app-prod-release
+        build:
+            args:
+                CONFIGURATION: prod
+    nginx:
+        container_name: angular-base-app-prod-app
+        image: angular-base-app-prod-app
+        build:
+            args:
+                CONFIGURATION: prod
