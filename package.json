@@ -1,5 +1,5 @@
 {
-    "name": "chg-gestor-documental-front-end",
+    "name": "angular-base-app--front-end",
     "version": "1.0.0",
     "scripts": {
         "ng": "ng",
@@ -10,7 +10,6 @@
         "watch": "ng build --watch --configuration %npm_config_env%",
         "test": "ng test",
         "test:coverage": "ng test --watch=false --code-coverage",
-        "dockerize": "docker-compose -f docker-compose.yml -f docker/docker-compose.%npm_config_env%.yml  --profile %npm_config_service% up --build -d",
         "lint": "eslint . tsconfig.json --fix",
         "lint-fix": "eslint . --fix",
         "format": "prettier --write .",
