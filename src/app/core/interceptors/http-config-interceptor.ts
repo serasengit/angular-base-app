@@ -7,11 +7,7 @@ import { APIError } from '@core/models/API-error.model';
 import { Environment } from '@core/models/environment.model';
 import { ENVIRONMENT } from '@core/tokens/environment.token';
 import { select, Store } from '@ngrx/store';
-import {
-    MessageDialogComponent,
-    MessageDialogData,
-    MessageType,
-} from '@shared/components/dialogs/message-dialog/message-dialog.component';
+import { MessageDialogComponent, MessageDialogData, MessageType } from '@shared/components/dialogs/message-dialog/message-dialog.component';
 import { combineLatest, Observable, throwError } from 'rxjs';
 import { catchError, finalize, switchMap, take } from 'rxjs/operators';
 import { hideSpinner, showSpinner } from '../../store/actions/app.actions';
@@ -26,7 +22,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
     constructor(
         @Inject(ENVIRONMENT) private readonly environment: Environment,
         private readonly dg: MatDialog,
-        readonly store: Store<AppState>
+        private readonly store: Store<AppState>
     ) {}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
@@ -36,10 +32,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
         return combineLatest([this.language$]).pipe(
             take(1),
             switchMap(([language]) => {
-                let headers: HttpHeaders = req.headers.set(
-                    'Access-Control-Allow-Origin',
-                    `${this.environment.API.url}`
-                );
+                let headers: HttpHeaders = req.headers.set('Access-Control-Allow-Origin', `${this.environment.API.url}`);
                 // Recover language app selected to send it as header param in the request in order to receive server messages translated
                 if (language) headers = headers.set('language', language);
                 req = req.clone({
@@ -73,16 +66,26 @@ export class HttpConfigInterceptor implements HttpInterceptor {
     }
 
     private showMessages(APIErrors: APIError[]): void {
-        const errorMessages: string[] = APIErrors.map((APIError) =>
+        // Retrieve API messages
+        const messages: string[] = APIErrors.map((APIError) =>
             APIError.errors?.length > 0
                 ? APIError.errors.map((error: { code: string; message: string }) => error.message)
                 : APIError.message
         ).flat();
-        const data: MessageDialogData = {
+        // Multiple API messages
+        let data: MessageDialogData = {
             type: MessageType.Error,
             title: `an_error_has_ocurred_while_processing_the_request`,
-            messages: errorMessages,
+            messages,
         };
+        // One API message
+        if (messages?.length === 1 && messages[0]) {
+            data = {
+                type: this.getMessageType(APIErrors[0]),
+                title: messages[0],
+            };
+        }
+        // Open message dialog component
         this.dg
             .open(MessageDialogComponent, {
                 width: '500px',
@@ -90,5 +93,18 @@ export class HttpConfigInterceptor implements HttpInterceptor {
             })
             .afterClosed()
             .pipe(take(1));
+    }
+
+    private getMessageType(APIError: APIError): MessageType {
+        switch (APIError.status) {
+            case 404:
+                return MessageType.Informative;
+            case 200:
+            case 201:
+            case 202:
+                return MessageType.Success;
+            default:
+                return MessageType.Error;
+        }
     }
 }

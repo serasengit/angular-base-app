@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 // Imports functions, variables, and mixins that are needed by other Bootstrap files
 @import 'node_modules/bootstrap/scss/bootstrap';
 @import 'bootstrap/scss/functions';
@@ -13,3 +14,14 @@
 @import 'flag-icons/css/flag-icons.min.css';
 // Import theme variables
 @import 'app/styles/variables.scss';
+
+// Mat-colors
+.mat-secondary {
+    color: mat.get-color-from-palette($secondary) !important;
+}
+.mat-success {
+    color: mat.get-color-from-palette($success) !important;
+}
+.mat-error {
+    color: mat.get-color-from-palette($error) !important;
+}
