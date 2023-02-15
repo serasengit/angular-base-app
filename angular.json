@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "chg-gestor-documental-front-end": {
+        "angular-base-app--front-end": {
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:component": {
@@ -20,7 +20,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/chg-gestor-documental-front-end",
+                        "outputPath": "dist/angular-base-app--front-end",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
@@ -67,10 +67,10 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "configurations": {
                         "prod": {
-                            "browserTarget": "chg-gestor-documental-front-end:build:prod"
+                            "browserTarget": "angular-base-app--front-end:build:prod"
                         },
                         "dev": {
-                            "browserTarget": "chg-gestor-documental-front-end:build:dev"
+                            "browserTarget": "angular-base-app--front-end:build:dev"
                         }
                     },
                     "defaultConfiguration": "dev"
@@ -78,7 +78,7 @@
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "chg-gestor-documental-front-end:build"
+                        "browserTarget": "angular-base-app--front-end:build"
                     }
                 },
                 "test": {

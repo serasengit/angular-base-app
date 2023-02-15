@@ -6,6 +6,6 @@ export const environment: Environment = {
     API: {
         prefix: '/api',
         version: 'v1',
-        url: 'https://chg-gestor-documental',
+        url: 'https://angular-base-app-',
     },
 };
