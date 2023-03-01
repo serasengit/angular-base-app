@@ -11,29 +11,24 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
 
-// Light theme
+// Default palettes
 $primary: mat.define-palette($primary-palette, 500);
-$secondary: mat.define-palette($secondary-palette, 500);
 $accent: mat.define-palette($accent-palette, 500);
-$warn: mat-palette($mat-red-palette);
+$warn: mat-palette($mat-orange-palette);
+// Custom palettes
+$secondary: mat.define-palette($secondary-palette, 500);
+$success: mat-palette($mat-green-palette);
+$error: mat-palette($mat-red-palette);
 
-$chg-main-theme: mat.define-light-theme(
+// Light theme
+$chg-main-theme: mat-light-theme($primary, $accent, $warn);
+// Add custom palettes
+$chg-main-theme: map_merge(
+    $chg-main-theme,
     (
-        color: (
-            primary: $primary,
-            accent: $accent,
-            warn: $warn,
-        ),
-    )
-);
-
-$chg-secondary-theme: mat.define-light-theme(
-    (
-        color: (
-            primary: $secondary,
-            accent: $accent,
-            warn: $warn,
-        ),
+        success: $success,
+        secondary: $secondary,
+        error: $error,
     )
 );
 
@@ -47,3 +42,5 @@ $primary: mat-color($primary);
 $secondary: mat-color($secondary);
 $accent: mat-color($accent);
 $warn: mat-color($warn);
+$success: mat-color($success);
+$error: mat-color($error);
