@@ -12,7 +12,7 @@
             background: #171d29;
             min-height: 75px;
             &__header {
-                padding-top: 10px;
+                padding-top: 5px;
                 text-align: center;
                 &__first-title {
                     font-size: 18px;
@@ -29,6 +29,10 @@
         }
         .mat-list-item a {
             text-decoration: none;
+        }
+        .mat-toolbar-row,
+        .mat-toolbar-single-row {
+            display: block;
         }
     }
 }

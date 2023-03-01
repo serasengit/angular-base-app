@@ -21,10 +21,10 @@ $success: mat-palette($mat-green-palette);
 $error: mat-palette($mat-red-palette);
 
 // Light theme
-$chg-main-theme: mat-light-theme($primary, $accent, $warn);
+$angular-base-app-main-theme: mat-light-theme($primary, $accent, $warn);
 // Add custom palettes
-$chg-main-theme: map_merge(
-    $chg-main-theme,
+$angular-base-app-main-theme: map_merge(
+    $angular-base-app-main-theme,
     (
         success: $success,
         secondary: $secondary,
@@ -35,7 +35,7 @@ $chg-main-theme: map_merge(
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include angular-material-theme($chg-main-theme);
+@include angular-material-theme($angular-base-app-main-theme);
 
 // Export theme colors
 $primary: mat-color($primary);
